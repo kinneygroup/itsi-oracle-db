@@ -175,4 +175,4 @@ To provide feedback, visit our [Github and Readme](https://www.github.com/kinney
 
 support@kinneygroup.com
 
-For more information about Kinney Group's Splunk Products, visit our [website](https://kinneygroup.com/
+For more information about Kinney Group's Splunk Products, visit our [website](https://kinneygroup.com/)
