@@ -1,0 +1,15 @@
+{
+    "service_templates": [],
+    "services": [
+        "da-itsi-cp-atlas-oracle-databaseoracle-database.json",
+        "da-itsi-cp-atlas-oracle-databaseinstance-management.json",
+        "da-itsi-cp-atlas-oracle-databasestorage-management.json",
+        "da-itsi-cp-atlas-oracle-databasequery-performance.json",
+        "da-itsi-cp-atlas-oracle-databaseconnection-pool-management.json",
+        "da-itsi-cp-atlas-oracle-databasesession-management.json",
+        "da-itsi-cp-atlas-oracle-databasesystem-metrics.json",
+        "da-itsi-cp-atlas-oracle-databasesql-execution.json",
+        "da-itsi-cp-atlas-oracle-databasesql-plan-monitoring.json"
+    ],
+    "kpi_base_searches": []
+}
