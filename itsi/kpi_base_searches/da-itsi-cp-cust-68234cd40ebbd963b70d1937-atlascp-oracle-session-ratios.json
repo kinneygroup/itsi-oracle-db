@@ -1,0 +1,45 @@
+{
+    "alert_lag": 30,
+    "alert_period": "5",
+    "base_search": "`itsi_atlas_cp_oracle_database` sourcetype IN(oracle:session,oracle:connections)\n| fields database_instance sourcetype STATUS connections\n| eval active_connection = if(sourcetype=\"oracle:session\" AND STATUS=\"ACTIVE\", 1, 0)\n| eval cached_connection = if(sourcetype=\"oracle:session\" AND STATUS=\"CACHED\", 1, 0)\n| stats sum(active_connection) as active_connections sum(cached_connection) as cached_connections sum(connections) as total_connections by database_instance\n| eval cached_connection_percent = round((cached_connections/total_connections)*100, 2)\n| eval active_connection_percent = round((active_connections/total_connections)*100, 2)\n| fields database_instance host cached_connection_percent active_connection_percent",
+    "description": "",
+    "entity_filter_field": "database_instance",
+    "entity_split_field": "database_instance",
+    "is_filter_entities_to_service": true,
+    "is_split_by_entity": true,
+    "key": "681e0cd0dc29f075ee0885c2",
+    "metric_qualifier": "",
+    "metrics": [
+        {
+            "aggregate_statop": "avg",
+            "entity_statop": "avg",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "692945f103820cb2367f355d",
+            "threshold_field": "active_connection_percent",
+            "title": "active_connection_percent",
+            "unit": ""
+        },
+        {
+            "aggregate_statop": "avg",
+            "entity_statop": "avg",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "8965c4d0dc6dbfce0e7da8ef",
+            "threshold_field": "cached_connection_percent",
+            "title": "cached_connection_percent",
+            "unit": ""
+        }
+    ],
+    "search_alert_earliest": "5",
+    "title": "AtlasCP-Oracle:Session Ratios",
+    "version": "0.0.41"
+}

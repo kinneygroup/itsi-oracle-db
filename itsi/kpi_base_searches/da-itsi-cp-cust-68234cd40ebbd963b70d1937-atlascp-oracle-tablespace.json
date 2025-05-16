@@ -1,0 +1,59 @@
+{
+    "alert_lag": 30,
+    "alert_period": "5",
+    "base_search": "`itsi_atlas_cp_oracle_database` sourcetype IN(oracle:tablespaceMetrics)\n| fields host tablespace_name storage_free_percent storage_used_percent current_size\n| eval tablespace_instance = host. \":\" .tablespace_name",
+    "description": "",
+    "entity_filter_field": "tablespace_instance",
+    "entity_split_field": "tablespace_instance",
+    "is_filter_entities_to_service": true,
+    "is_split_by_entity": true,
+    "key": "681e1399dc29f075ee0885c3",
+    "metric_qualifier": "",
+    "metrics": [
+        {
+            "aggregate_statop": "max",
+            "entity_statop": "latest",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "530b76b46ec6267308cdfd24",
+            "threshold_field": "current_size",
+            "title": "current_size",
+            "unit": ""
+        },
+        {
+            "aggregate_statop": "min",
+            "entity_statop": "latest",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "56029440299559a2de6f6eed",
+            "threshold_field": "storage_free_percent",
+            "title": "storage_free_percent",
+            "unit": ""
+        },
+        {
+            "aggregate_statop": "max",
+            "entity_statop": "latest",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "ab0a0db2e3be65b707a67da8",
+            "threshold_field": "storage_used_percent",
+            "title": "storage_used_percent",
+            "unit": ""
+        }
+    ],
+    "search_alert_earliest": "5",
+    "title": "AtlasCP-Oracle:Tablespace",
+    "version": "0.0.41"
+}

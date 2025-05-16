@@ -1,0 +1,73 @@
+{
+    "alert_lag": 30,
+    "alert_period": "5",
+    "base_search": "`itsi_atlas_cp_oracle_database` sourcetype IN(oracle:sga)\n| fields host sga_buffer_cache_size sga_free_memory sga_shared_memory sga_shared_free_memory",
+    "description": "",
+    "entity_filter_field": "host",
+    "entity_split_field": "host",
+    "is_filter_entities_to_service": true,
+    "is_split_by_entity": true,
+    "key": "681d9a01676883cb620346c6",
+    "metric_qualifier": "",
+    "metrics": [
+        {
+            "aggregate_statop": "max",
+            "entity_statop": "latest",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "6bd8ad3d69f30a2d3614e2fd",
+            "threshold_field": "sga_buffer_cache_size",
+            "title": "sga_buffer_cache_size",
+            "unit": "B"
+        },
+        {
+            "aggregate_statop": "min",
+            "entity_statop": "latest",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "83c6efe441cde95169a349b0",
+            "threshold_field": "sga_free_memory",
+            "title": "sga_free_memory",
+            "unit": "B"
+        },
+        {
+            "aggregate_statop": "min",
+            "entity_statop": "latest",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "75f096c2ea706d36c5fc3532",
+            "threshold_field": "sga_shared_free_memory",
+            "title": "sga_shared_free_memory",
+            "unit": "B"
+        },
+        {
+            "aggregate_statop": "min",
+            "entity_statop": "latest",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "be0ea1a8b79821dc57fe5682",
+            "threshold_field": "sga_shared_memory",
+            "title": "sga_shared_memory",
+            "unit": "B"
+        }
+    ],
+    "search_alert_earliest": "5",
+    "title": "AtlasCP-Oracle:SGA",
+    "version": "0.0.41"
+}
