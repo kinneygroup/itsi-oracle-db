@@ -1,0 +1,59 @@
+{
+    "alert_lag": 30,
+    "alert_period": "5",
+    "base_search": "`itsi_atlas_cp_oracle_database` sourcetype IN(oracle:connections,oracle:pool:connections,oracle:session)\n| fields host STATUS sourcetype connections connection_pool_used_percent\n| eval active_connection = case(sourcetype=\"oracle:session\" AND STATUS=\"ACTIVE\", 1)",
+    "description": "",
+    "entity_filter_field": "database_instance",
+    "entity_split_field": "database_instance",
+    "is_filter_entities_to_service": true,
+    "is_split_by_entity": true,
+    "key": "681d3732676883cb620346c3",
+    "metric_qualifier": "",
+    "metrics": [
+        {
+            "aggregate_statop": "sum",
+            "entity_statop": "count",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "63af4455fc2c358344fbcb48",
+            "threshold_field": "active_connection",
+            "title": "active_connections",
+            "unit": ""
+        },
+        {
+            "aggregate_statop": "max",
+            "entity_statop": "latest",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "5ae5763e748562f20807fb3a",
+            "threshold_field": "connection_pool_used_percent",
+            "title": "connection_pool_used_percent",
+            "unit": "%"
+        },
+        {
+            "aggregate_statop": "max",
+            "entity_statop": "latest",
+            "fill_gaps": "null_value",
+            "gap_custom_alert_value": "0",
+            "gap_severity": "unknown",
+            "gap_severity_color": "#CCCCCC",
+            "gap_severity_color_light": "#EEEEEE",
+            "gap_severity_value": "-1",
+            "key": "b3152879cca20ef074d3517b",
+            "threshold_field": "connections",
+            "title": "connections",
+            "unit": "ct"
+        }
+    ],
+    "search_alert_earliest": "5",
+    "title": "AtlasCP-Oracle:Connections.Sessions",
+    "version": "0.0.41"
+}

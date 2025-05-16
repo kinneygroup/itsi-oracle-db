@@ -27,10 +27,10 @@
             "recommended": false
         }
     },
-    "description": "The primary service representing the overall health and performance of the Oracle Database environment.",
+    "description": "",
     "enabled": false,
     "entity_rules": [],
-    "key": "da-itsi-cp-atlas-oracle-databaseoracle-database",
+    "key": "41db01f9-ecd2-4ee6-8fa6-8eba03bd43a2",
     "kpis": [
         {
             "adaptive_thresholding_training_window": "-7d",
@@ -111,9 +111,10 @@
             "anomaly_detection_training_window": "-7d",
             "backfill_earliest_time": "-7d",
             "backfill_enabled": false,
-            "base_search": "`get_full_itsi_summary_service_health_events(da-itsi-cp-atlas-oracle-databaseoracle-database)`",
+            "base_search": "`get_full_itsi_summary_service_health_events(41db01f9-ecd2-4ee6-8fa6-8eba03bd43a2)`",
             "base_search_id": null,
             "base_search_metric": null,
+            "base_service_template_id": null,
             "cohesive_ad": {
                 "sensitivity": 8
             },
@@ -201,7 +202,7 @@
             "is_filter_entities_to_service": false,
             "is_recommended_time_policies": false,
             "is_split_by_entity": false,
-            "key": "SHKPI-da-itsi-cp-atlas-oracle-databaseoracle-database",
+            "key": "SHKPI-41db01f9-ecd2-4ee6-8fa6-8eba03bd43a2",
             "kpi_base_search": "",
             "kpi_template_kpi_id": "",
             "kpi_threshold_template_id": "",
@@ -211,17 +212,17 @@
                 "metric_name": ""
             },
             "recommendation_training_window": "-30d",
-            "search": "`get_full_itsi_summary_service_health_events(da-itsi-cp-atlas-oracle-databaseoracle-database)` | stats latest(health_score) AS aggregate",
-            "search_aggregate": "`get_full_itsi_summary_service_health_events(da-itsi-cp-atlas-oracle-databaseoracle-database)` | stats latest(health_score) AS aggregate",
+            "search": "`get_full_itsi_summary_service_health_events(41db01f9-ecd2-4ee6-8fa6-8eba03bd43a2)` | stats latest(health_score) AS aggregate",
+            "search_aggregate": "`get_full_itsi_summary_service_health_events(41db01f9-ecd2-4ee6-8fa6-8eba03bd43a2)` | stats latest(health_score) AS aggregate",
             "search_alert": "",
             "search_alert_earliest": "15",
             "search_alert_entities": "",
             "search_buckets": "",
             "search_entities": null,
             "search_occurrences": 1.0,
-            "search_time_compare": "`get_full_itsi_summary_service_health_events(da-itsi-cp-atlas-oracle-databaseoracle-database)` [| stats count | addinfo | eval search= \"earliest=\" + tostring(info_min_time-(info_max_time-info_min_time))+ \" latest=\" + tostring(info_max_time) |fields search] | addinfo | eval bucket=if(_time<info_max_time-((info_max_time-info_min_time)/2), \"last_window\", \"current_window\") | stats avg(health_score) AS aggregate BY bucket | reverse | delta aggregate AS window_delta | search bucket=current_window | eval window_direction=if(window_delta >0, \"increase\", if(window_delta < 0, \"decrease\", \"none\"))",
-            "search_time_series": "`get_full_itsi_summary_service_health_events(da-itsi-cp-atlas-oracle-databaseoracle-database)` | timechart avg(health_score) AS aggregate",
-            "search_time_series_aggregate": "`get_full_itsi_summary_service_health_events(da-itsi-cp-atlas-oracle-databaseoracle-database)` | timechart avg(health_score) AS aggregate",
+            "search_time_compare": "`get_full_itsi_summary_service_health_events(41db01f9-ecd2-4ee6-8fa6-8eba03bd43a2)` [| stats count | addinfo | eval search= \"earliest=\" + tostring(info_min_time-(info_max_time-info_min_time))+ \" latest=\" + tostring(info_max_time) |fields search] | addinfo | eval bucket=if(_time<info_max_time-((info_max_time-info_min_time)/2), \"last_window\", \"current_window\") | stats avg(health_score) AS aggregate BY bucket | reverse | delta aggregate AS window_delta | search bucket=current_window | eval window_direction=if(window_delta >0, \"increase\", if(window_delta < 0, \"decrease\", \"none\"))",
+            "search_time_series": "`get_full_itsi_summary_service_health_events(41db01f9-ecd2-4ee6-8fa6-8eba03bd43a2)` | timechart avg(health_score) AS aggregate",
+            "search_time_series_aggregate": "`get_full_itsi_summary_service_health_events(41db01f9-ecd2-4ee6-8fa6-8eba03bd43a2)` | timechart avg(health_score) AS aggregate",
             "search_time_series_entities": "",
             "search_type": "adhoc",
             "service_title": "Oracle Database",
@@ -286,30 +287,27 @@
     "services_depends_on": [
         {
             "kpis_depending_on": [
-                "SHKPI-da-itsi-cp-atlas-oracle-databaseinstance-management"
+                "SHKPI-9d82b547-f20d-4f6b-af97-b12f66cf5e29"
             ],
-            "service_id": "da-itsi-cp-atlas-oracle-databaseinstance-management"
+            "overloaded_urgencies": {},
+            "service_id": "9d82b547-f20d-4f6b-af97-b12f66cf5e29"
         },
         {
             "kpis_depending_on": [
-                "SHKPI-da-itsi-cp-atlas-oracle-databasestorage-management"
+                "SHKPI-5aa56e71-0713-41e9-85be-a4dd56038756"
             ],
-            "service_id": "da-itsi-cp-atlas-oracle-databasestorage-management"
+            "overloaded_urgencies": {},
+            "service_id": "5aa56e71-0713-41e9-85be-a4dd56038756"
         },
         {
             "kpis_depending_on": [
-                "SHKPI-da-itsi-cp-atlas-oracle-databasequery-performance"
+                "SHKPI-5bc4149b-5a93-4ac2-8ba3-18350191e62a"
             ],
-            "service_id": "da-itsi-cp-atlas-oracle-databasequery-performance"
-        },
-        {
-            "kpis_depending_on": [
-                "SHKPI-da-itsi-cp-atlas-oracle-databaseconnection-pool-management"
-            ],
-            "service_id": "da-itsi-cp-atlas-oracle-databaseconnection-pool-management"
+            "overloaded_urgencies": {},
+            "service_id": "5bc4149b-5a93-4ac2-8ba3-18350191e62a"
         }
     ],
     "team_id": "default_itsi_security_group",
     "title": "Oracle Database",
-    "version": "0.0.1"
+    "version": "0.0.41"
 }
